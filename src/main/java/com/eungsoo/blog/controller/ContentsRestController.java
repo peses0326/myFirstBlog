@@ -17,13 +17,13 @@ public class ContentsRestController {
     private final ContentsRepository ContentsRepository;
     private final ContentsService ContentsService;
 
-
+    // 게시글 전체 조회
     @GetMapping("/api/contents")
     public List<Contents> getContents() {
         return ContentsRepository.findAllByOrderByCreatedAtDesc();
     }
 
-    // 게시글 조회
+    // 게시글 특정 조회
     @GetMapping("/api/contents/{id}")
     public Contents getContents(@PathVariable Long id) {
         Contents contents =  ContentsRepository.findById(id).orElseThrow(
